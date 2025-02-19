@@ -20,6 +20,9 @@ if System.get_env("PHX_SERVER") do
   config :trends_replies, TrendsRepliesWeb.Endpoint, server: true
 end
 
+config :trends_replies, TrendsReplies.Auth,
+  jwt_secret: System.get_env("JWT_SECRET") || "verySecretKey"
+
 if config_env() == :prod do
   database_url =
     System.get_env("DATABASE_URL") ||

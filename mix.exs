@@ -48,7 +48,8 @@ defmodule TrendsReplies.MixProject do
       {:redix, "~> 1.2"},
       {:castore, "~> 1.0"},
       {:phoenix_pubsub, "~> 2.1"},
-      {:phoenix_pubsub_redis, "~> 3.0"}
+      {:phoenix_pubsub_redis, "~> 3.0"},
+      {:joken, "~> 2.5"}
     ]
   end
 

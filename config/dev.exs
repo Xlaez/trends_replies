@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :trends_replies, TrendsReplies.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "user",
+  password: "password123",
   hostname: "localhost",
-  database: "trends_replies_dev",
+  database: "gist",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
