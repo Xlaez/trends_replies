@@ -1,0 +1,29 @@
+defmodule TrendsRepliesWeb.Router do
+  use TrendsRepliesWeb, :router
+
+  pipeline :browser do
+    plug :accepts, ["json"]
+    # plug :fetch_live_flash
+  end
+
+  scope "/", TrendsRepliesWeb do
+    pipe_through :browser
+  end
+
+  # Enable LiveDashboard and Swoosh mailbox preview in development
+  if Application.compile_env(:trends_replies, :dev_routes) do
+    # If you want to use the LiveDashboard in production, you should put
+    # it behind authentication and allow only admins to access it.
+    # If your application does not have an admins-only section yet,
+    # you can use Plug.BasicAuth to set up some basic authentication
+    # as long as you are also using SSL (which you should anyway).
+    import Phoenix.LiveDashboard.Router
+
+    scope "/dev" do
+      pipe_through [:fetch_session, :protect_from_forgery]
+
+      live_dashboard "/dashboard", metrics: TrendsRepliesWeb.Telemetry
+      forward "/mailbox", Plug.Swoosh.MailboxPreview
+    end
+  end
+end
