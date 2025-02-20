@@ -12,7 +12,12 @@ defmodule TrendsRepliesWeb.Endpoint do
   ]
 
   socket "/live", Phoenix.LiveView.Socket,
-    websocket: [connect_info: [session: @session_options]],
+    websocket: [
+      connect_info: [session: @session_options],
+      timeout: 45_000,
+      transport_log: :debug,
+      max_frame_size: 1024 * 1024
+    ],
     longpoll: [connect_info: [session: @session_options]]
 
   socket "/socket", TrendsRepliesWeb.UserSocket,
